@@ -1,0 +1,11 @@
+{
+	"name": "veritone-shopping-list",
+	"version": "0.0.0",
+	"description": "Veritone fullstack shopping list project.",
+	"private": true,
+	"workspaces": [
+		"apps/*"
+	],
+	"scripts": {},
+	"author": "Andrius"
+}
