@@ -1,0 +1,11 @@
+{
+	"name": "@veritone-shopping-list/api",
+	"version": "0.0.0",
+	"description": "Veritone shopping list api.",
+	"author": "Andrius",
+	"dependencies": {
+		"fastify": "^3.28.0",
+		"graphql": "^16.3.0",
+		"mercurius": "^9.3.6"
+	}
+}
