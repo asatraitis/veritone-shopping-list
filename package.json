@@ -1,11 +1,20 @@
 {
-	"name": "veritone-shopping-list",
-	"version": "0.0.0",
-	"description": "Veritone fullstack shopping list project.",
-	"private": true,
-	"workspaces": [
-		"apps/*"
-	],
-	"scripts": {},
-	"author": "Andrius"
+  "name": "veritone-shopping-list",
+  "version": "0.0.0",
+  "description": "Veritone fullstack shopping list project.",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint --fix --ext .jsx --ext .js apps/"
+  },
+  "author": "Andrius",
+  "devDependencies": {
+    "eslint": "^8.13.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.29.4",
+    "prettier": "^2.6.2"
+  }
 }
