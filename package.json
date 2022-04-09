@@ -6,7 +6,10 @@
   "workspaces": [
     "apps/*"
   ],
-  "scripts": {},
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint --fix --ext .jsx --ext .js apps/"
+  },
   "author": "Andrius",
   "devDependencies": {
     "eslint": "^8.13.0",
