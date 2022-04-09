@@ -3,19 +3,20 @@ import {
   GraphQLString,
   GraphQLInt,
   GraphQLBoolean,
+  GraphQLNonNull,
 } from 'graphql';
 import { Date } from '../scalars.js';
 
 const Item = new GraphQLObjectType({
   name: 'Item',
   fields: {
-    id: { type: GraphQLInt },
-    name: { type: GraphQLString },
+    id: { type: new GraphQLNonNull(GraphQLInt) },
+    name: { type: new GraphQLNonNull(GraphQLString) },
     description: { type: GraphQLString },
-    amount: { type: GraphQLInt },
-    completed: { type: GraphQLBoolean },
-    createdAt: { type: Date },
-    updatedAt: { type: Date },
+    amount: { type: new GraphQLNonNull(GraphQLInt) },
+    completed: { type: new GraphQLNonNull(GraphQLBoolean) },
+    createdAt: { type: new GraphQLNonNull(Date) },
+    updatedAt: { type: new GraphQLNonNull(Date) },
   },
 });
 
