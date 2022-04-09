@@ -3,17 +3,18 @@ import {
   GraphQLInt,
   GraphQLBoolean,
   GraphQLInputObjectType,
+  GraphQLNonNull,
 } from 'graphql';
 
 const createItemArgsFields = {
-  name: { type: GraphQLString },
+  name: { type: new GraphQLNonNull(GraphQLString) },
   description: { type: GraphQLString },
   amount: { type: GraphQLInt },
 };
 
 export const editItemArgsFields = {
   ...createItemArgsFields,
-  id: { type: GraphQLInt },
+  id: { type: new GraphQLNonNull(GraphQLInt) },
   completed: { type: GraphQLBoolean },
 };
 
