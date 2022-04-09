@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "dev:api": "npm run dev --workspace=@veritone-shopping-list/api",
+    "dev:client": "npm run dev --workspace=@veritone-shopping-list/client",
     "format": "prettier --write .",
     "lint": "eslint --fix --ext .jsx --ext .js apps/"
   },
