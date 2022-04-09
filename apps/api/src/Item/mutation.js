@@ -9,7 +9,6 @@ export const createItem = {
   },
   resolve: async (_, { item: { name, description, amount } }) => {
     try {
-      console.log({ name, description, amount });
       return prisma.item.create({
         data: {
           name,
