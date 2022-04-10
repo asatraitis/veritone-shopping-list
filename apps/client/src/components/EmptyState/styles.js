@@ -1,8 +1,10 @@
+import { LIGHT_GREY, TEXT_GREY } from '../../common/colors';
+
 export const emptyStateContainer = {
   border: 1,
   borderRadius: 1,
-  borderColor: '#C6C6C6', // const it
-  color: '#87898C', // put into const
+  borderColor: LIGHT_GREY,
+  color: TEXT_GREY,
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',

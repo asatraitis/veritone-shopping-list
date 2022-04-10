@@ -1,5 +1,7 @@
+import { APP_BAR_COLOR } from '../../common/colors';
+
 export const appBarStyles = {
-  backgroundColor: '#4D81B7',
+  backgroundColor: APP_BAR_COLOR,
   color: 'white',
   paddingY: 2.45,
   paddingX: 3.5,
