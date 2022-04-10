@@ -11,12 +11,12 @@ import Typography from '@mui/material/Typography';
 import styles from './styles';
 import { listItemPropTypes } from './propTypes';
 
-const ListItem = ({ selected, onSelected, text, secondaryText }) => {
+const ListItem = ({ id, selected, onSelected, text, secondaryText }) => {
   const [checked, setChecked] = useState(selected);
 
   const handleChecked = ({ target }) => {
     setChecked(target.checked);
-    onSelected && onSelected(target.checked);
+    onSelected && onSelected({ checked: target.checked, id });
   };
   return (
     <MuiListItem
