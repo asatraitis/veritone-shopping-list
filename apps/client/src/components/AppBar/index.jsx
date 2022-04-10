@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 
 export default function AppBar({ title = '' }) {
@@ -17,3 +18,7 @@ export default function AppBar({ title = '' }) {
     </Box>
   );
 }
+
+AppBar.propTypes = {
+  title: PropTypes.string,
+};
