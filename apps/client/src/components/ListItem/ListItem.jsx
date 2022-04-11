@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import MuiListItem from '@mui/material/ListItem';
 import Checkbox from '@mui/material/Checkbox';
 import ListItemText from '@mui/material/ListItemText';
@@ -11,38 +10,39 @@ import Typography from '@mui/material/Typography';
 import styles from './styles';
 import { listItemPropTypes } from './propTypes';
 
-const ListItem = ({ id, selected, onSelected, text, secondaryText }) => {
-  const [checked, setChecked] = useState(selected);
-
-  const handleChecked = ({ target }) => {
-    setChecked(target.checked);
-    onSelected && onSelected({ checked: target.checked, id });
-  };
+const ListItem = ({
+  selected,
+  onSelect,
+  text,
+  secondaryText,
+  onEdit,
+  onDelete,
+}) => {
   return (
     <MuiListItem
       secondaryAction={
         <Box sx={{ display: 'flex' }}>
           <ListItemButton sx={styles.listItemButton}>
-            <EditIcon />
+            <EditIcon onClick={onEdit} />
           </ListItemButton>
           <ListItemButton sx={styles.listItemButton}>
-            <DeleteIcon />
+            <DeleteIcon onClick={onDelete} />
           </ListItemButton>
         </Box>
       }
-      sx={styles.checked[checked].listItem}
+      sx={styles.checked[selected].listItem}
     >
       <ListItemIcon>
-        <Checkbox onChange={handleChecked} checked={checked} />
+        <Checkbox onChange={onSelect} checked={selected} />
       </ListItemIcon>
       <ListItemText
         primary={
-          <Typography sx={styles.checked[checked].primaryListText}>
+          <Typography sx={styles.checked[selected].primaryListText}>
             {text}
           </Typography>
         }
         secondary={
-          <Typography sx={styles.checked[checked].secondaryListText}>
+          <Typography sx={styles.checked[selected].secondaryListText}>
             {secondaryText}
           </Typography>
         }
@@ -54,7 +54,9 @@ const ListItem = ({ id, selected, onSelected, text, secondaryText }) => {
 ListItem.propTypes = listItemPropTypes;
 ListItem.defaultProps = {
   selected: false,
-  onSelected: () => {},
+  onSelect: () => {},
+  onEdit: () => {},
+  onDelete: () => {},
   text: '',
   secondaryText: '',
 };

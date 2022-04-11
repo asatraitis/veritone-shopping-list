@@ -14,6 +14,7 @@ const createItemArgsFields = {
 
 export const editItemArgsFields = {
   ...createItemArgsFields,
+  name: { type: GraphQLString },
   id: { type: new GraphQLNonNull(GraphQLInt) },
   completed: { type: GraphQLBoolean },
 };

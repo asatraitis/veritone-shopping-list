@@ -1,5 +1,6 @@
 import Fastify from 'fastify';
 import mercurius from 'mercurius';
+import fastifyCors from 'fastify-cors';
 import schema from './schema.js';
 
 export default function server() {
@@ -7,6 +8,7 @@ export default function server() {
     logger: true,
   });
 
+  fastify.register(fastifyCors);
   fastify.register(mercurius, {
     schema,
     graphiql: true,
