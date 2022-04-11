@@ -28,7 +28,7 @@ const extraCreateItemReducers = {
   },
   [createItem.fulfilled]: (state, action) => {
     state.isLoading = false;
-    state.items.push(action.payload?.createItem);
+    state.items.unshift(action.payload?.createItem);
     state.currentItem = {
       name: '',
       description: '',
