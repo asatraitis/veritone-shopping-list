@@ -27,18 +27,12 @@ export const editItem = {
   args: {
     item: { type: EditItemArgs },
   },
-  resolve: async (
-    _,
-    { item: { id, name, description, amount, completed } },
-  ) => {
+  resolve: async (_, { item: { id, ...rest } }) => {
     try {
       return prisma.item.update({
         where: { id },
         data: {
-          name,
-          description,
-          amount,
-          completed,
+          ...rest,
         },
       });
     } catch (err) {
