@@ -96,9 +96,9 @@ ItemModal.propTypes = itemModalPropTypes;
 ItemModal.defaultProps = {
   variant: 'add',
   item: {
-    name: 'a',
-    description: 'b',
-    amount: 3,
+    name: '',
+    description: '',
+    amount: 0,
     completed: true,
   },
   onClose: () => {},
