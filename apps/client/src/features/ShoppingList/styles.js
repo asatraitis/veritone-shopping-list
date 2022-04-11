@@ -28,5 +28,6 @@ export const itemListStyles = {
   itemListUlStyles: {
     display: 'flex',
     flexDirection: 'column',
+    gap: 1.5,
   },
 };
