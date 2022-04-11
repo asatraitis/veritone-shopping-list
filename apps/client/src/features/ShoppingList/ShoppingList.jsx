@@ -8,6 +8,7 @@ import {
 } from './itemsSlice';
 import EmptyList from './EmptyList';
 import Spinner from './Spinner';
+import ItemList from './ItemList';
 import { shoppingListContainerList } from './styles';
 import { getItems, createItem } from './reducers/extraReducers';
 import { ItemModal } from '../../components';
@@ -42,6 +43,12 @@ const ShoppingList = () => {
     <Box className="shopping-list-container" sx={shoppingListContainerList}>
       <EmptyList show={!items.length && !isLoading} onAddItem={handleAddItem} />
       <Spinner show={isLoading} />
+      <ItemList
+        show={items.length && !isLoading}
+        items={items}
+        onAddItem={handleAddItem}
+      />
+
       <ItemModal
         open={isOpenAddItem}
         onClose={closeAddItem}

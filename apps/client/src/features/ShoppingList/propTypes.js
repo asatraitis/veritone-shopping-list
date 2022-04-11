@@ -8,3 +8,9 @@ export const emptyListPropTypes = {
 export const spinnerPropTypes = {
   show: PropTypes.bool,
 };
+
+export const itemListPropTypes = {
+  show: PropTypes.bool,
+  items: PropTypes.array,
+  onAddItem: PropTypes.func,
+};
