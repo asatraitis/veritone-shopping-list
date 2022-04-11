@@ -18,6 +18,9 @@ const ItemList = ({
   const handleEdit = id => {
     onEditItem && onEditItem(id);
   };
+  const handleDelete = id => {
+    onDeleteItem && onDeleteItem(id);
+  };
   if (show) {
     return (
       <Box
@@ -44,6 +47,9 @@ const ItemList = ({
                 onEdit={() => {
                   handleEdit(item.id);
                 }}
+                onDelete={() => {
+                  handleDelete(item.id);
+                }}
                 selected={item.completed}
                 text={item.name}
                 secondaryText={item.description}
@@ -62,6 +68,7 @@ ItemList.defaultProps = {
   items: [],
   onAddItem: () => {},
   onSelectItem: () => {},
+  onDeleteItem: () => {},
 };
 ItemList.propTypes = itemListPropTypes;
 

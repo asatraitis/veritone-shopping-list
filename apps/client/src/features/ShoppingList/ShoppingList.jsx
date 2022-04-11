@@ -12,13 +12,35 @@ import EmptyList from './EmptyList';
 import Spinner from './Spinner';
 import ItemList from './ItemList';
 import { shoppingListContainerList } from './styles';
-import { getItems, createItem, editItem } from './reducers/extraReducers';
-import { ItemModal } from '../../components';
+import {
+  getItems,
+  createItem,
+  editItem,
+  deleteItem,
+} from './reducers/extraReducers';
+import { ItemModal, DeleteModal } from '../../components';
 
 const ShoppingList = () => {
   const { items, currentItem, isLoading, itemOperation } =
     useSelector(itemsSelector);
   const dispatch = useDispatch();
+
+  // DELETE MODAL
+  const [isOpenDelete, setOpenDelete] = useState(false);
+  const handleDeleteModalClose = () => {
+    setOpenDelete(false);
+    dispatch(resetCurrentitem());
+  };
+  const handleDeleteItem = id => {
+    dispatch(editCurrentItem(id));
+    setOpenDelete(true);
+  };
+  const handleConfirmDelete = () => {
+    dispatch(deleteItem(currentItem));
+    handleDeleteModalClose();
+  };
+
+  //
 
   const [isOpenAddItem, setAddItem] = useState(false);
   const closeAddItem = () => {
@@ -72,8 +94,8 @@ const ShoppingList = () => {
         onAddItem={handleAddItem}
         onEditItem={handleEditItem}
         onSelectItem={handleSelectItem}
+        onDeleteItem={handleDeleteItem}
       />
-
       <ItemModal
         variant={itemOperation}
         open={isOpenAddItem}
@@ -81,6 +103,11 @@ const ShoppingList = () => {
         item={currentItem}
         onFieldUpdate={handleAddItemChange}
         onSave={handleItemSave}
+      />
+      <DeleteModal
+        open={isOpenDelete}
+        onClose={handleDeleteModalClose}
+        onConfirm={handleConfirmDelete}
       />
     </Box>
   );

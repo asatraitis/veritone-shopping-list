@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import graphqlClient from '../../../graphqlClient';
-import { GET_ITEMS, CREATE_ITEM, EDIT_ITEM } from '../gql';
+import { GET_ITEMS, CREATE_ITEM, EDIT_ITEM, DELETE_ITEM } from '../gql';
 
 export const getItems = createAsyncThunk('items/itemList', async () => {
   return graphqlClient.request(GET_ITEMS);
@@ -51,8 +51,31 @@ const extraEditItemReducers = {
   },
 };
 
+export const deleteItem = createAsyncThunk(
+  'items/deleteItem',
+  async ({ id }) => {
+    return graphqlClient.request(DELETE_ITEM, { id });
+  },
+);
+const extraDeleteItemReducers = {
+  [deleteItem.pending]: state => {
+    state.isLoading = true;
+  },
+  [deleteItem.fulfilled]: (state, { payload }) => {
+    state.isLoading = false;
+    state.items = state.items.filter(
+      item => item.id !== payload?.deleteItem.id,
+    );
+  },
+  [deleteItem.rejected]: state => {
+    state.isLoading = false;
+    console.error('Something went wrong while deleting an item.');
+  },
+};
+
 export default {
   ...extraGetItemsReducers,
   ...extraCreateItemReducers,
   ...extraEditItemReducers,
+  ...extraDeleteItemReducers,
 };
