@@ -9,8 +9,10 @@ export const emptyStateContainer = {
   flexDirection: 'column',
   alignItems: 'center',
   fontFamily: 'Nunito',
+  minWidth: 612,
   fontSize: 18,
-  paddingY: 11,
+  paddingTop: 11,
+  paddingBottom: 16,
 };
 
 export const emptyStateMsg = {

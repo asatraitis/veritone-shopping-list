@@ -1,4 +1,5 @@
 export const APP_BAR_COLOR = '#4D81B7';
+export const APP_BAR_TEXT_COLOR = '#FFFFFF';
 export const LIGHT_GREY = '#C6C6C6';
 export const TEXT_GREY = '#87898C';
 export const TEXT_DARK_GREY = '#7D7A7A';
