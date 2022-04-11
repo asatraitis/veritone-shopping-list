@@ -11,3 +11,17 @@ export const GET_ITEMS = gql`
     }
   }
 `;
+
+export const CREATE_ITEM = gql`
+  mutation createItem($name: String!, $description: String, $amount: Int) {
+    createItem(
+      item: { name: $name, description: $description, amount: $amount }
+    ) {
+      id
+      name
+      description
+      amount
+      completed
+    }
+  }
+`;

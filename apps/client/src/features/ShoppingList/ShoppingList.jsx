@@ -9,7 +9,7 @@ import {
 import EmptyList from './EmptyList';
 import Spinner from './Spinner';
 import { shoppingListContainerList } from './styles';
-import { getItems } from './reducers/extraReducers';
+import { getItems, createItem } from './reducers/extraReducers';
 import { ItemModal } from '../../components';
 
 const ShoppingList = () => {
@@ -22,13 +22,16 @@ const ShoppingList = () => {
     dispatch(resetCurrentitem());
   };
   const handleAddItem = () => {
-    // TODO: add item
     setAddItem(true);
   };
   const handleAddItemChange = e => {
     const { value, name } = e.target;
     const payload = { value, name };
     dispatch(updateCurrentItem(payload));
+  };
+  const handleCreateItem = () => {
+    dispatch(createItem(currentItem));
+    closeAddItem();
   };
 
   useEffect(() => {
@@ -42,8 +45,9 @@ const ShoppingList = () => {
       <ItemModal
         open={isOpenAddItem}
         onClose={closeAddItem}
-        onFieldUpdate={handleAddItemChange}
         item={currentItem}
+        onFieldUpdate={handleAddItemChange}
+        onSave={handleCreateItem}
       />
     </Box>
   );
