@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { extraReducers } from './reducers';
 
 export const itemsSlice = createSlice({
   name: 'items',
@@ -7,6 +8,7 @@ export const itemsSlice = createSlice({
     currentItem: {},
     isLoading: false,
   },
+  extraReducers,
 });
 
 export const itemsSelector = state => state.items;
