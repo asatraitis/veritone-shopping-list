@@ -1,22 +1,8 @@
-import { AppBar, EmptyState, Button, ListItem } from './components';
+import { Provider } from 'react-redux';
+import store from './store';
 
 function App() {
-  return (
-    <div className="App">
-      <AppBar title="Shopping List" />
-      <EmptyState>
-        <Button variant="contained">Add your first item</Button>
-      </EmptyState>
-      <ListItem
-        text="tomatoe"
-        secondaryText="Cherry tomatoe"
-        selected={true}
-        onSelected={sel => {
-          console.log(sel);
-        }}
-      />
-    </div>
-  );
+  return <Provider store={store}>wrapped w/ store</Provider>;
 }
 
 export default App;
