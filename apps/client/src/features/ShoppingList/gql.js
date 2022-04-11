@@ -25,3 +25,30 @@ export const CREATE_ITEM = gql`
     }
   }
 `;
+
+export const EDIT_ITEM = gql`
+  mutation editItem(
+    $id: Int!
+    $name: String
+    $description: String
+    $amount: Int
+    $completed: Boolean
+  ) {
+    editItem(
+      item: {
+        id: $id
+        name: $name
+        description: $description
+        amount: $amount
+        completed: $completed
+      }
+    ) {
+      id
+      name
+      description
+      amount
+      completed
+      updatedAt
+    }
+  }
+`;

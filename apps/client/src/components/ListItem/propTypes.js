@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 
 export const listItemPropTypes = {
-  id: PropTypes.number,
   selected: PropTypes.bool,
-  onSelected: PropTypes.func,
+  onSelect: PropTypes.func,
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func,
   text: PropTypes.string,
   secondaryText: PropTypes.string,
 };

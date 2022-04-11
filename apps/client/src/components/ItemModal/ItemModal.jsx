@@ -10,6 +10,21 @@ import { Button, SelectAmount } from '../index';
 import styles from './styles';
 import { itemModalPropTypes } from './propTypes';
 
+const variantLabels = {
+  primaryButton: {
+    add: 'Add Task',
+    edit: 'Save Item',
+  },
+  primaryText: {
+    add: 'Add an Item',
+    edit: 'Edit an Item',
+  },
+  secondaryText: {
+    add: 'Add your new item below',
+    edit: 'Edit your item below',
+  },
+};
+
 const ItemModal = ({ variant, item, onClose, open, onFieldUpdate, onSave }) => {
   const handleFieldUpdate = e => {
     onFieldUpdate && onFieldUpdate(e);
@@ -24,10 +39,10 @@ const ItemModal = ({ variant, item, onClose, open, onFieldUpdate, onSave }) => {
           </Box>
           <Box sx={styles.itemModalPaddingStyles}>
             <Typography sx={styles.itemModalPrimaryTextStyles}>
-              Add an Item
+              {variantLabels.primaryText[variant]}
             </Typography>
             <Typography sx={styles.itemModalSecondaryTextStyles}>
-              Add your new item below
+              {variantLabels.secondaryText[variant]}
             </Typography>
             <Box sx={{ paddingBottom: 20 }}>
               <TextField
@@ -84,7 +99,9 @@ const ItemModal = ({ variant, item, onClose, open, onFieldUpdate, onSave }) => {
             <Button variant="text" onClick={onClose}>
               Cancel
             </Button>
-            <Button onClick={onSave}>Add Task</Button>
+            <Button onClick={onSave}>
+              {variantLabels.primaryButton[variant]}
+            </Button>
           </Box>
         </Box>
       </Modal>

@@ -13,4 +13,6 @@ export const itemListPropTypes = {
   show: PropTypes.bool,
   items: PropTypes.array,
   onAddItem: PropTypes.func,
+  onEditItem: PropTypes.func,
+  onDeleteItem: PropTypes.func,
 };

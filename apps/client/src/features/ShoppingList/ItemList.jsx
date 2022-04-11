@@ -4,7 +4,20 @@ import { ListItem, Button } from '../../components';
 import { itemListStyles } from './styles';
 import { itemListPropTypes } from './propTypes';
 
-const ItemList = ({ show, items, onAddItem }) => {
+const ItemList = ({
+  show,
+  items,
+  onAddItem,
+  onSelectItem,
+  onEditItem,
+  onDeleteItem,
+}) => {
+  const handleSelect = (e, id) => {
+    onSelectItem && onSelectItem(e, id);
+  };
+  const handleEdit = id => {
+    onEditItem && onEditItem(id);
+  };
   if (show) {
     return (
       <Box
@@ -23,9 +36,18 @@ const ItemList = ({ show, items, onAddItem }) => {
         <Box component="ul" sx={itemListStyles.itemListUlStyles}>
           {items.map(item => {
             return (
-              <Box key={item.id} component="li">
-                <ListItem text={item.name} secondaryText={item.description} />
-              </Box>
+              <ListItem
+                key={item.id}
+                onSelect={e => {
+                  handleSelect(e, item.id);
+                }}
+                onEdit={() => {
+                  handleEdit(item.id);
+                }}
+                selected={item.completed}
+                text={item.name}
+                secondaryText={item.description}
+              />
             );
           })}
         </Box>
@@ -39,6 +61,7 @@ ItemList.defaultProps = {
   show: false,
   items: [],
   onAddItem: () => {},
+  onSelectItem: () => {},
 };
 ItemList.propTypes = itemListPropTypes;
 
