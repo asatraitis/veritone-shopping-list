@@ -1,88 +1,37 @@
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
-import {
-  itemsSelector,
-  updateCurrentItem,
-  resetCurrentitem,
-  selectItem,
-  editCurrentItem,
-} from './itemsSlice';
+import { itemsSelector } from './itemsSlice';
 import EmptyList from './EmptyList';
 import Spinner from './Spinner';
 import ItemList from './ItemList';
 import { shoppingListContainerList } from './styles';
-import {
-  getItems,
-  createItem,
-  editItem,
-  deleteItem,
-} from './reducers/extraReducers';
 import { ItemModal, DeleteModal } from '../../components';
+import useItemDelete from './useItemDelete';
+import useItemCreateOrEdit from './useItemCreateOrEdit';
+import useItemsFetch from './useItemsFetch';
 
 const ShoppingList = () => {
   const { items, currentItem, isLoading, itemOperation } =
     useSelector(itemsSelector);
-  const dispatch = useDispatch();
 
-  // DELETE MODAL
-  const [isOpenDelete, setOpenDelete] = useState(false);
-  const handleDeleteModalClose = () => {
-    setOpenDelete(false);
-    dispatch(resetCurrentitem());
-  };
-  const handleDeleteItem = id => {
-    dispatch(editCurrentItem(id));
-    setOpenDelete(true);
-  };
-  const handleConfirmDelete = () => {
-    dispatch(deleteItem(currentItem));
-    handleDeleteModalClose();
-  };
+  useItemsFetch();
 
-  //
+  const [
+    isOpenDelete,
+    { handleConfirmDelete, handleDeleteItem, handleDeleteModalClose },
+  ] = useItemDelete();
 
-  const [isOpenAddItem, setAddItem] = useState(false);
-  const closeAddItem = () => {
-    setAddItem(false);
-    dispatch(resetCurrentitem());
-  };
-  const handleAddItem = () => {
-    setAddItem(true);
-  };
-  const handleItemSave = () => {
-    if (itemOperation === 'add') {
-      dispatch(createItem(currentItem));
-    } else {
-      dispatch(editItem(currentItem));
-    }
-    closeAddItem();
-  };
-  const handleAddItemChange = e => {
-    const { value, name, checked } = e.target;
-    const payload =
-      name === 'completed' ? { value: checked, name } : { value, name };
-    dispatch(updateCurrentItem(payload));
-  };
-
-  const handleSelectItem = ({ target }, id) => {
-    const { checked } = target;
-    dispatch(selectItem({ id, checked }));
-    dispatch(editItem({ id, completed: checked }));
-  };
-
-  const handleEditItem = id => {
-    setAddItem(true);
-    dispatch(editCurrentItem(id));
-  };
-
-  useEffect(() => {
-    dispatch(getItems());
-  }, [dispatch]);
-
-  useEffect(() => {
-    console.log(currentItem);
-  }, [currentItem]);
+  const [
+    isOpenAddItem,
+    {
+      closeAddItem,
+      handleAddItem,
+      handleItemSave,
+      handleAddItemChange,
+      handleSelectItem,
+      handleEditItem,
+    },
+  ] = useItemCreateOrEdit();
 
   return (
     <Box className="shopping-list-container" sx={shoppingListContainerList}>
