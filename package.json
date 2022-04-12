@@ -10,6 +10,8 @@
     "dev:api": "npm run dev --workspace=@veritone-shopping-list/api",
     "dev:client": "npm run dev --workspace=@veritone-shopping-list/client",
     "dev": "concurrently \"npm run dev:api\" \"npm run dev:client\"",
+    "test:client": "npm run test --workspace=@veritone-shopping-list/client",
+    "test:client:ui": "npm run test:ui --workspace=@veritone-shopping-list/client",
     "build:client": "npm run build --workspace=@veritone-shopping-list/client",
     "start:client": "npm run preview --workspace=@veritone-shopping-list/client",
     "start:api": "npm run start --workspace=@veritone-shopping-list/api",

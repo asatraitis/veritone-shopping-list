@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -21,7 +23,13 @@
     "react-redux": "^7.2.8"
   },
   "devDependencies": {
+    "@testing-library/react": "^12.1.5",
+    "@testing-library/user-event": "^14.1.0",
     "@vitejs/plugin-react": "^1.0.7",
-    "vite": "^2.9.0"
+    "@vitest/ui": "^0.9.3",
+    "jsdom": "^19.0.0",
+    "msw": "^0.39.2",
+    "vite": "^2.9.0",
+    "vitest": "^0.9.3"
   }
 }
