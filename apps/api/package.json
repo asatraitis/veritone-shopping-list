@@ -6,7 +6,8 @@
   "author": "Andrius",
   "scripts": {
     "dev": "nodemon ./src/index.js",
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "migrate": "prisma migrate dev"
   },
   "dependencies": {
     "@prisma/client": "^3.12.0",

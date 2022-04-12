@@ -7,6 +7,7 @@
     "apps/*"
   ],
   "scripts": {
+    "migrate": "npm run migrate --workspace=@veritone-shopping-list/api",
     "dev:api": "npm run dev --workspace=@veritone-shopping-list/api",
     "dev:client": "npm run dev --workspace=@veritone-shopping-list/client",
     "dev": "concurrently \"npm run dev:api\" \"npm run dev:client\"",
