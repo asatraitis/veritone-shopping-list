@@ -7,7 +7,12 @@ const Spinner = ({ show }) => {
   if (show) {
     return (
       <Box sx={{ display: 'flex', marginTop: 14 }}>
-        <CircularProgress sx={spinnerStyles} size={80} thickness={2} />
+        <CircularProgress
+          aria-label="loading"
+          sx={spinnerStyles}
+          size={80}
+          thickness={2}
+        />
       </Box>
     );
   }
