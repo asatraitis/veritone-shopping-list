@@ -25,7 +25,15 @@ const variantLabels = {
   },
 };
 
-const ItemModal = ({ variant, item, onClose, open, onFieldUpdate, onSave }) => {
+const ItemModal = ({
+  variant,
+  item,
+  onClose,
+  open,
+  onFieldUpdate,
+  onSave,
+  validations,
+}) => {
   const handleFieldUpdate = e => {
     onFieldUpdate && onFieldUpdate(e);
   };
@@ -46,6 +54,8 @@ const ItemModal = ({ variant, item, onClose, open, onFieldUpdate, onSave }) => {
             </Typography>
             <Box sx={{ paddingBottom: 20 }}>
               <TextField
+                error={validations?.name?.error}
+                helperText={validations?.name?.errorText}
                 placeholder="Item name"
                 onChange={handleFieldUpdate}
                 variant="outlined"
@@ -76,6 +86,8 @@ const ItemModal = ({ variant, item, onClose, open, onFieldUpdate, onSave }) => {
                 onSelect={handleFieldUpdate}
                 value={item.amount}
                 name="amount"
+                error={validations?.amount?.error}
+                errorText={validations?.amount?.errorText}
               />
               {variant === 'edit' ? (
                 <FormGroup>
@@ -117,6 +129,10 @@ ItemModal.defaultProps = {
     description: '',
     amount: 0,
     completed: true,
+  },
+  validations: {
+    name: { error: 'false', errorText: '' },
+    amount: { error: 'false', errorText: '' },
   },
   onClose: () => {},
   onFieldUpdate: () => {},
