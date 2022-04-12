@@ -17,6 +17,10 @@
     "lint": "eslint --fix --ext .jsx --ext .js apps/"
   },
   "author": "Andrius",
+  "engines": {
+    "node": ">=16.13.1",
+    "npm": ">=8.1.2"
+  },
   "devDependencies": {
     "concurrently": "^7.1.0",
     "eslint": "^8.13.0",
