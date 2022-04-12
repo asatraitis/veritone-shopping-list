@@ -5,7 +5,8 @@
   "description": "Veritone shopping list api.",
   "author": "Andrius",
   "scripts": {
-    "dev": "nodemon ./src/index.js"
+    "dev": "nodemon ./src/index.js",
+    "start": "node ./src/index.js"
   },
   "dependencies": {
     "@prisma/client": "^3.12.0",
