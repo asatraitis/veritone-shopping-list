@@ -9,7 +9,7 @@
 1. `npm install` to install packges.
 2. `npm run migrate` to init postgres schema.
 3. `npm run dev` to start client and api dev.
-4. 
+
 Frontend: `http://localhost:3000/`
 
 Graphiql: `http://localhost:3005/graphiql`
