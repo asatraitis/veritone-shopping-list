@@ -67,21 +67,29 @@ const ItemModal = ({
                   name: 'name',
                 }}
               />
-              <TextField
-                placeholder="Description"
-                variant="outlined"
-                fullWidth
-                multiline
-                rows={7}
-                value={item.description}
-                onChange={handleFieldUpdate}
-                inputProps={{
-                  maxLength: 100,
-                  sx: styles.itemModalInputText,
-                  name: 'description',
-                }}
-                sx={{ marginTop: 1.7 }}
-              />
+              <Box
+                sx={{ position: 'relative' }}
+                className="description-wrapper"
+              >
+                <TextField
+                  placeholder="Description"
+                  variant="outlined"
+                  fullWidth
+                  multiline
+                  rows={7}
+                  value={item.description}
+                  onChange={handleFieldUpdate}
+                  inputProps={{
+                    maxLength: 100,
+                    sx: styles.itemModalInputText,
+                    name: 'description',
+                  }}
+                  sx={{ marginTop: 1.7 }}
+                />
+                <Box sx={styles.itemModalDescriptionCounterStyles}>
+                  {`${item.description.length}/100`}
+                </Box>
+              </Box>
               <SelectAmount
                 onSelect={handleFieldUpdate}
                 value={item.amount}

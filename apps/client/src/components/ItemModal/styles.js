@@ -74,6 +74,17 @@ const itemModalCheckbox = {
   marginTop: 1.7,
 };
 
+const itemModalDescriptionCounterStyles = {
+  position: 'absolute',
+  bottom: 0,
+  right: 0,
+  marginY: 1,
+  marginX: 1.5,
+  fontFamily: 'Nunito',
+  fontSize: '12px',
+  color: MODAL_HEADER_TEXT,
+};
+
 export default {
   itemModalContainerStyles,
   itemModalHeaderStyles,
@@ -84,4 +95,5 @@ export default {
   itemModalInputText,
   itemModalFooterStyles,
   itemModalCheckbox,
+  itemModalDescriptionCounterStyles,
 };
