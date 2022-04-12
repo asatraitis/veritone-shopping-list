@@ -9,11 +9,17 @@ const initialCurrentItem = {
   completed: true,
 };
 
+const initialCurrentItemValidations = {
+  name: { error: false, errorText: '' },
+  amount: { error: false, errorText: '' },
+};
+
 export const itemsSlice = createSlice({
   name: 'items',
   initialState: {
     items: [],
     currentItem: initialCurrentItem,
+    currentItemValidations: initialCurrentItemValidations,
     isLoading: false,
     itemOperation: 'add',
   },
@@ -24,6 +30,7 @@ export const itemsSlice = createSlice({
     },
     resetCurrentitem: state => {
       state.currentItem = initialCurrentItem;
+      state.currentItemValidations = initialCurrentItemValidations;
       state.itemOperation = 'add';
     },
     selectItem: (state, { payload }) => {
@@ -34,6 +41,9 @@ export const itemsSlice = createSlice({
     editCurrentItem: (state, { payload }) => {
       state.itemOperation = 'edit';
       state.currentItem = state.items.find(item => item.id === payload);
+    },
+    setValidations: (state, { payload }) => {
+      state.currentItemValidations = payload;
     },
   },
   extraReducers,
@@ -46,6 +56,7 @@ export const {
   resetCurrentitem,
   selectItem,
   editCurrentItem,
+  setValidations,
 } = itemsSlice.actions;
 
 export default itemsSlice.reducer;

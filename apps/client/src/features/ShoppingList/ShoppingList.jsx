@@ -11,8 +11,13 @@ import useItemCreateOrEdit from './useItemCreateOrEdit';
 import useItemsFetch from './useItemsFetch';
 
 const ShoppingList = () => {
-  const { items, currentItem, isLoading, itemOperation } =
-    useSelector(itemsSelector);
+  const {
+    items,
+    currentItem,
+    isLoading,
+    itemOperation,
+    currentItemValidations,
+  } = useSelector(itemsSelector);
 
   useItemsFetch();
 
@@ -50,6 +55,7 @@ const ShoppingList = () => {
         open={isOpenAddItem}
         onClose={closeAddItem}
         item={currentItem}
+        validations={currentItemValidations}
         onFieldUpdate={handleAddItemChange}
         onSave={handleItemSave}
       />

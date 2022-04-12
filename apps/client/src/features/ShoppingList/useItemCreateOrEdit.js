@@ -6,8 +6,10 @@ import {
   resetCurrentitem,
   selectItem,
   updateCurrentItem,
+  setValidations,
 } from './itemsSlice';
 import { createItem, editItem } from './reducers/extraReducers';
+import { validateCurrentItem } from './validations';
 
 const useItemCreateOrEdit = () => {
   const { currentItem, itemOperation } = useSelector(itemsSelector);
@@ -22,12 +24,17 @@ const useItemCreateOrEdit = () => {
     setOpen(true);
   };
   const handleItemSave = () => {
-    if (itemOperation === 'add') {
-      dispatch(createItem(currentItem));
+    const validatedItem = validateCurrentItem(currentItem);
+    if (validatedItem.withErrors) {
+      dispatch(setValidations(validatedItem.validations));
     } else {
-      dispatch(editItem(currentItem));
+      if (itemOperation === 'add') {
+        dispatch(createItem(currentItem));
+      } else {
+        dispatch(editItem(currentItem));
+      }
+      closeAddItem();
     }
-    closeAddItem();
   };
   const handleAddItemChange = e => {
     const { value, name, checked } = e.target;
